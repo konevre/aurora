@@ -42,12 +42,12 @@ if (parsed.success) {
     const fieldErrors = errors.filter(error => error.path.length > 0);
 
     if (fieldErrors.length > 0) {
-    console.error('\nMissing or invalid environment variables:');
-    fieldErrors.forEach(error => {
-        const field = error.path.join('.');
-        const message = error.message;
-        console.error(`  • ${field}: ${message}`);
-    });
+        console.error('\nMissing or invalid environment variables:');
+        fieldErrors.forEach(error => {
+            const field = error.path.join('.');
+            const message = error.message;
+            console.error(`  • ${field}: ${message}`);
+        });
     }
 
     console.error('\nPlease check your .env files and ensure all required variables are set.');
