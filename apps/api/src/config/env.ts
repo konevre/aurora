@@ -27,6 +27,7 @@ const EnvSchema = z.object({
 
   DATABASE_URL: z.string().min(1, 'DATABASE_URL is required'),
   JWT_SECRET: z.string().min(16, 'JWT_SECRET must be at least 16 chars'),
+  BCRYPT_SALT_ROUNDS: z.coerce.number().int().positive().default(10),
 
   REDIS_URL: z.string().min(1).optional(), 
 });

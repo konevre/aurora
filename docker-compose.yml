@@ -1,8 +1,6 @@
 services:
   db:
     image: postgres:16
-    env_file:
-      - .env.compose
     environment:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
