@@ -1,0 +1,50 @@
+{
+    "SignUpPage": {
+        "join-aurora": "Присоединиться к Aurora",
+        "create-account": "Создать аккаунт",
+        "start-journey": "Начните свое путешествие с нами",
+        "password": "Пароль",
+        "confirm-password": "Подтвердите пароль",
+        "creating-account": "Создаем аккаунт...",
+        "or-register-with": "Или зарегистрироваться с",
+        "already-have-account": "Уже есть аккаунт?",
+        "login": "Войти в аккаунт",
+        "try-demo": "Попробовать демо",
+        "i-accept": "Я принимаю",
+        "terms-of-use": "Условия использования",
+        "privacy-policy": "Политику конфиденциальности",
+        "receive-news": "Получать новости и обновления",
+        "password-strength-description": "Минимум 8 символов, включая заглавную букву, строчную букву и цифру",
+        "weak": "Слабый",
+        "medium": "Средний",
+        "good": "Хороший",
+        "full-name": "Полное имя",
+        "email-address": "Email адрес",
+        "full-name-placeholder": "Иван Иванов",
+        "registering-with": "Регистрируемся с",
+        "and": "и"
+    },
+    "ValidationErrors": {
+        "name-required": "Имя должно содержать минимум 2 символа",
+        "name-too-long": "Имя не должно превышать 50 символов",
+        "invalid-email": "Введите корректный email адрес",
+        "password-too-short": "Пароль должен содержать минимум 8 символов",
+        "password-lowercase": "Пароль должен содержать строчную букву",
+        "password-uppercase": "Пароль должен содержать заглавную букву",
+        "password-number": "Пароль должен содержать цифру",
+        "confirm-password-required": "Подтверждение пароля обязательно",
+        "passwords-not-match": "Пароли не совпадают",
+        "agree-terms-required": "Необходимо принять условия использования",
+        "form-errors": "Пожалуйста, исправьте ошибки в форме",
+        "registration-error": "Произошла ошибка при регистрации. Попробуйте еще раз."
+    },
+    "FooterWidget": {
+        "help": "Помощь",
+        "changelog": "Что нового",
+        "status": "Статус"
+    },
+    "HeaderWidget": {
+        "already-have-account": "Уже есть аккаунт?",
+        "login": "Войти в аккаунт"
+    }
+}

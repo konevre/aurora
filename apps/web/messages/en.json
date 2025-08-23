@@ -1,0 +1,50 @@
+{
+    "SignUpPage": {
+        "join-aurora": "Join Aurora",
+        "create-account": "Create Account",
+        "start-journey": "Start your journey with us",
+        "password": "Password",
+        "confirm-password": "Confirm Password",
+        "creating-account": "Creating Account...",
+        "or-register-with": "Or register with",
+        "already-have-account": "Already have an account?",
+        "login": "Login",
+        "try-demo": "Try Demo",
+        "i-accept": "I accept",
+        "terms-of-use": "Terms of Use",
+        "privacy-policy": "Privacy Policy",
+        "receive-news": "Receive news and updates",
+        "password-strength-description": "Minimum 8 characters, including uppercase, lowercase, and number",
+        "weak": "Weak",
+        "medium": "Medium",
+        "good": "Good",
+        "full-name": "Full Name",
+        "email-address": "Email Address",
+        "full-name-placeholder": "John Doe",
+        "registering-with": "Registering with",
+        "and": "and"
+    },
+    "ValidationErrors": {
+        "name-required": "Name must contain at least 2 characters",
+        "name-too-long": "Name should not exceed 50 characters",
+        "invalid-email": "Please enter a valid email address",
+        "password-too-short": "Password must contain at least 8 characters",
+        "password-lowercase": "Password must contain a lowercase letter",
+        "password-uppercase": "Password must contain an uppercase letter",
+        "password-number": "Password must contain a number",
+        "confirm-password-required": "Password confirmation is required",
+        "passwords-not-match": "Passwords do not match",
+        "agree-terms-required": "You must accept the terms of use",
+        "form-errors": "Please fix the errors in the form",
+        "registration-error": "An error occurred during registration. Please try again."
+    },
+    "FooterWidget": {
+        "help": "Help",
+        "changelog": "Changelog",
+        "status": "Status"
+    },
+    "HeaderWidget": {
+        "already-have-account": "Already have an account?",
+        "login": "Login"
+    }
+}
