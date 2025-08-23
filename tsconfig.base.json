@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "target": "ES2020",
+        "lib": ["es2020"],
+        "strict": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "moduleResolution": "node",
+        "noEmit": true,
+        "incremental": true,
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["./apps/*/src", "./packages/*/src"]
+        }
+    }
+}

@@ -1,5 +1,12 @@
-import { IsEmail, IsNotEmpty, IsString, Matches, MaxLength, MinLength } from "class-validator";
 import { Transform } from "class-transformer";
+import {
+    IsEmail,
+    IsNotEmpty,
+    IsString,
+    Matches,
+    MaxLength,
+    MinLength
+} from "class-validator";
 
 export class CreateUserDto {
     @Transform(({ value }) => value.toLowerCase().trim())
@@ -18,7 +25,8 @@ export class CreateUserDto {
     @MaxLength(64)
     // TODO: export to common (for frontend validation)
     @Matches(/^[a-z0-9._-]+$/, {
-        message: 'Username can only contain letters, numbers, dots, underscores, and hyphens',
+        message:
+            "Username can only contain letters, numbers, dots, underscores, and hyphens"
     })
     username: string;
 }

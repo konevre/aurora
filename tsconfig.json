@@ -1,24 +1,12 @@
 {
-  "compilerOptions": {
-    "target": "ES2020",
-    "lib": ["dom", "dom.iterable", "es6"],
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
-    "incremental": true,
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["./apps/*/src", "./packages/*/src"]
-    }
-  },
-  "include": ["apps/**/*", "packages/**/*"],
-  "exclude": ["node_modules", "dist", ".turbo"]
+    "extends": "./tsconfig.base.json",
+    "compilerOptions": {
+        "lib": ["dom", "dom.iterable", "es6"],
+        "allowJs": true,
+        "module": "esnext",
+        "isolatedModules": true,
+        "jsx": "preserve"
+    },
+    "include": ["apps/**/*", "packages/**/*"],
+    "exclude": ["node_modules", "dist", ".turbo"]
 }

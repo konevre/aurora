@@ -1,30 +1,30 @@
-import { Exclude, Expose } from 'class-transformer';
+import { Exclude, Expose } from "class-transformer";
 
 export class PublicUserDto {
-  @Expose()
-  id: string;
+    @Expose()
+    id: string;
 
-  @Expose()
-  username: string;
+    @Expose()
+    username: string;
 
-  @Expose()
-  email: string;
+    @Expose()
+    email: string;
 
-  @Expose()
-  displayName?: string;
+    @Expose()
+    displayName?: string;
 
-  @Expose()
-  avatarFileId?: number;
+    @Expose()
+    avatarFileId?: number;
 
-  @Expose()
-  experienceXp: number;
+    @Expose()
+    experienceXp: number;
 
-  @Expose()
-  tokenVersion: number;
+    @Expose()
+    tokenVersion: number;
 
-  @Expose()
-  createdAt: Date;
+    @Expose()
+    createdAt: Date;
 
-  @Exclude()
-  passwordHash: string;
+    @Exclude()
+    passwordHash: string;
 }

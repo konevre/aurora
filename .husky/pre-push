@@ -1,0 +1,2 @@
+npm -ws --if-present run lint || exit 1
+npm -ws --if-present run test
