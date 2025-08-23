@@ -20,6 +20,9 @@ export class PublicUserDto {
   experienceXp: number;
 
   @Expose()
+  tokenVersion: number;
+
+  @Expose()
   createdAt: Date;
 
   @Exclude()

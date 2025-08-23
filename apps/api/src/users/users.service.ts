@@ -1,9 +1,8 @@
 import { ConflictException, Injectable } from '@nestjs/common';
-import { PrismaService } from 'src/prisma.service';
+import { PrismaService } from '../prisma/prisma.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { PublicUserDto } from './dto/public-user.dto';
 import * as bcrypt from 'bcrypt';
-import { env } from 'src/config/env';
 import { ConfigService } from '@nestjs/config';
 
 @Injectable()
@@ -29,14 +28,16 @@ export class UsersService {
         );
       }
   
-      const passwordHash = await bcrypt.hash(password, env.BCRYPT_SALT_ROUNDS);
+      const passwordHash = await bcrypt.hash(
+        password, 
+        parseInt(this.configService.get('BCRYPT_SALT_ROUNDS')!)
+      );
   
       const newUser = await this.prisma.user.create({
         data: {
           username,
           email,
-          passwordHash,
-          displayName: username,
+          passwordHash
         },
       });
   
@@ -44,4 +45,21 @@ export class UsersService {
   
       return publicUser as unknown as PublicUserDto;
     }
-  }
+
+    async findByEmailOrUsername(emailOrUsername: string): Promise<PublicUserDto | null> {
+      return this.prisma.user.findFirst({
+        where: {
+          OR: [{ email: emailOrUsername }, { username: emailOrUsername }],
+        },
+      }) as unknown as PublicUserDto;
+    }
+
+    async getTokenVersion(userId: string): Promise<number | null> {
+      const user = await this.prisma.user.findUnique({
+        where: { id: userId },
+        select: { tokenVersion: true },
+      });
+
+      return user?.tokenVersion ?? null;
+    }
+}

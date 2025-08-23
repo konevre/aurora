@@ -26,7 +26,11 @@ const EnvSchema = z.object({
   PORT: z.coerce.number().int().positive().default(4000),
 
   DATABASE_URL: z.string().min(1, 'DATABASE_URL is required'),
-  JWT_SECRET: z.string().min(16, 'JWT_SECRET must be at least 16 chars'),
+  JWT_ACCESS_SECRET: z.string().min(16, 'JWT_ACCESS_SECRET must be at least 16 chars'),
+  JWT_REFRESH_SECRET: z.string().min(16, 'JWT_REFRESH_SECRET must be at least 16 chars'),
+  JWT_ACCESS_TTL_SEC: z.coerce.number().int().positive().default(60 * 15), // 15 minutes
+  JWT_REFRESH_TTL_SEC: z.coerce.number().int().positive().default(60 * 60 * 24 * 7), // 7 days
+  JWT_ALGORITHM: z.enum(['HS256', 'RS256']).default('HS256'),
   BCRYPT_SALT_ROUNDS: z.coerce.number().int().positive().default(10),
 
   REDIS_URL: z.string().min(1).optional(), 
