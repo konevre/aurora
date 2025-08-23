@@ -78,22 +78,22 @@ export function SignUpPage() {
             >
                 <motion.div
                     variants={fade(0)}
-                    className="rounded-2xl border border-slate-700/50 bg-slate-800/30 backdrop-blur-xl p-8 shadow-2xl shadow-slate-950/50"
+                    className="rounded-2xl border border-default app-card p-8"
                 >
                     <motion.div
                         variants={fade(0.1)}
                         className="text-center mb-8"
                     >
-                        <div className="inline-flex items-center gap-2 text-slate-300 mb-2">
-                            <Sparkles className="h-5 w-5 text-blue-400" />
+                        <div className="inline-flex items-center gap-2 text-secondary mb-2">
+                            <Sparkles className="h-5 w-5 text-accent" />
                             <span className="text-sm font-medium">
                                 {t("join-aurora")}
                             </span>
                         </div>
-                        <h1 className="text-2xl font-bold bg-gradient-to-r from-slate-100 to-slate-300 bg-clip-text text-transparent">
+                        <h1 className="text-2xl font-bold text-logo-gradient">
                             {t("create-account")}
                         </h1>
-                        <p className="text-slate-400 text-sm mt-2">
+                        <p className="text-secondary text-sm mt-2">
                             {t("start-journey")}
                         </p>
                     </motion.div>
@@ -109,7 +109,12 @@ export function SignUpPage() {
                                     }}
                                     animate={{ opacity: 1, y: 0, scale: 1 }}
                                     exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                                    className="rounded-xl bg-red-500/10 border border-red-400/30 text-red-300 px-4 py-3 text-sm backdrop-blur-sm"
+                                    className="rounded-xl px-4 py-3 text-sm backdrop-blur-sm"
+                                    style={{
+                                        backgroundColor: "var(--error-bg)",
+                                        border: "1px solid var(--border-error)",
+                                        color: "var(--text-error)"
+                                    }}
                                 >
                                     {state.message}
                                 </motion.div>
@@ -198,10 +203,10 @@ export function SignUpPage() {
                             className="relative py-4"
                         >
                             <div className="absolute inset-0 flex items-center">
-                                <div className="w-full border-t border-slate-700/50"></div>
+                                <div className="w-full border-t border-default"></div>
                             </div>
                             <div className="relative flex justify-center text-xs">
-                                <span className="bg-slate-800/30 backdrop-blur-sm px-4 text-slate-400 font-medium">
+                                <span className="app-card-soft backdrop-blur-sm px-4 text-secondary font-medium">
                                     {t("or-register-with")}
                                 </span>
                             </div>
@@ -245,9 +250,9 @@ export function SignUpPage() {
 
                 <motion.div
                     variants={fade(1.0)}
-                    className="rounded-2xl border border-slate-700/50 bg-slate-800/20 backdrop-blur-xl p-6 text-center"
+                    className="rounded-2xl border border-default app-card-soft p-6 text-center"
                 >
-                    <div className="text-sm text-slate-400 mb-4">
+                    <div className="text-sm text-secondary mb-4">
                         {t("already-have-account")}
                     </div>
                     <div className="flex flex-col sm:flex-row gap-3 justify-center">

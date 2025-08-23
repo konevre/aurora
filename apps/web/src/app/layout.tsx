@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
+import { ThemeProvider } from "next-themes";
+import React from "react";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -24,11 +26,24 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
+        <html suppressHydrationWarning lang="en">
             <body
                 className={`${geistSans.variable} ${geistMono.variable} antialiased`}
             >
-                <NextIntlClientProvider>{children}</NextIntlClientProvider>
+                {/* Early theme apply to avoid FOUC */}
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: `(() => { try { const ls = localStorage.getItem('theme'); const mql = window.matchMedia('(prefers-color-scheme: dark)'); const system = mql.matches ? 'dark' : 'light'; const theme = ls === 'system' || !ls ? system : ls; document.documentElement.setAttribute('data-theme', theme); } catch(_){} })();`
+                    }}
+                />
+                <ThemeProvider
+                    defaultTheme="system"
+                    enableSystem
+                    attribute="data-theme"
+                    disableTransitionOnChange
+                >
+                    <NextIntlClientProvider>{children}</NextIntlClientProvider>
+                </ThemeProvider>
             </body>
         </html>
     );

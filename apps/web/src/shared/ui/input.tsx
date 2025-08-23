@@ -18,15 +18,15 @@ function Input({
 }: CustomInputProps) {
     const baseStyles =
         variant === "with-icon"
-            ? "w-full rounded-xl bg-slate-700/30 border border-slate-600/50 pl-11 pr-4 py-3.5 outline-none placeholder:text-slate-500 transition-all duration-200 backdrop-blur-sm"
-            : "w-full rounded-xl bg-slate-700/30 border border-slate-600/50 px-4 py-3.5 outline-none placeholder:text-slate-500 transition-all duration-200 backdrop-blur-sm";
+            ? "w-full rounded-xl app-input pl-11 pr-4 py-3.5 outline-none placeholder:text-secondary transition-all duration-200 backdrop-blur-sm"
+            : "w-full rounded-xl app-input px-4 py-3.5 outline-none placeholder:text-secondary transition-all duration-200 backdrop-blur-sm";
 
     const focusStyles =
-        "focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 focus:bg-slate-700/50";
+        "focus:[box-shadow:0_0_0_3px_var(--ring)] focus:border-[color:var(--border-focus)]";
 
     const validationStyles = cn(
-        isValid ? "border-emerald-400/50" : "",
-        hasError ? "border-red-400/50" : ""
+        isValid ? "border-[color:rgba(52,211,153,0.5)]" : "",
+        hasError ? "border-error" : ""
     );
 
     return (

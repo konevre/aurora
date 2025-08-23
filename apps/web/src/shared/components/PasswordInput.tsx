@@ -91,12 +91,12 @@ export function PasswordInput({
         <div>
             <label
                 htmlFor={name}
-                className="block text-sm font-medium text-slate-300 mb-2"
+                className="block text-sm font-medium text-secondary mb-2"
             >
                 {label}
             </label>
             <div className="relative group">
-                <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400 group-focus-within:text-blue-400 transition-colors" />
+                <Lock className="pointer-events-none z-10 absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-secondary group-focus-within:text-accent transition-colors" />
                 <Input
                     id={name}
                     name={name}
@@ -114,7 +114,7 @@ export function PasswordInput({
                 <motion.button
                     type="button"
                     onClick={onToggleShowPassword}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-200 transition-colors p-1"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-secondary hover:text-heading transition-colors p-1"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                 >
@@ -126,24 +126,27 @@ export function PasswordInput({
                 </motion.button>
             </div>
 
-            {error && <p className="mt-1 text-sm text-red-400">{error}</p>}
+            {error && <p className="mt-1 text-sm text-error">{error}</p>}
 
             {/* Отображение силы пароля только для основного режима */}
             {showStrengthMeter && value && !isConfirmMode && (
                 <div className="mt-2 space-y-2">
                     <div className="flex items-center gap-2">
-                        <div className="flex-1 h-1.5 bg-slate-700/50 rounded-full overflow-hidden">
+                        <div
+                            className="flex-1 h-1.5 rounded-full overflow-hidden"
+                            style={{ backgroundColor: "var(--progress-bg)" }}
+                        >
                             <motion.div
                                 className={`h-full transition-all duration-300 ${getStrengthColor(passwordStrength)}`}
                                 initial={{ width: 0 }}
                                 animate={{ width: `${passwordStrength}%` }}
                             />
                         </div>
-                        <span className="text-xs text-slate-400">
+                        <span className="text-xs text-secondary">
                             {getStrengthText(passwordStrength)}
                         </span>
                     </div>
-                    <div className="text-xs text-slate-500">
+                    <div className="text-xs text-secondary">
                         {t("password-strength-description")}
                     </div>
                 </div>

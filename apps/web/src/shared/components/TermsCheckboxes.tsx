@@ -43,32 +43,30 @@ export function TermsCheckboxes({
                         id="agreeTerms"
                         name="agreeTerms"
                         defaultChecked={agreeTerms}
-                        className="mt-0.5 data-[state=checked]:bg-blue-500 data-[state=checked]:border-blue-500 data-[state=checked]:text-white"
+                        className="mt-0.5 data-[state=checked]:bg-[var(--primary)] data-[state=checked]:border-[var(--primary)] data-[state=checked]:text-white"
                     />
                     <Label
                         htmlFor="agreeTerms"
-                        className="text-sm flex-wrap text-slate-300 cursor-pointer leading-relaxed hover:text-slate-200 transition-colors"
+                        className="text-sm flex-wrap text-secondary cursor-pointer leading-relaxed hover:text-heading transition-colors"
                     >
                         {t("i-accept")}{" "}
                         <a
                             href="/legal/terms"
-                            className="text-blue-400 hover:text-blue-300 underline underline-offset-2"
+                            className="text-accent hover:text-accent underline underline-offset-2"
                         >
                             {t("terms-of-use")}
                         </a>{" "}
                         {t("and")}{" "}
                         <a
                             href="/legal/privacy"
-                            className="text-blue-400 hover:text-blue-300 underline underline-offset-2"
+                            className="text-accent hover:text-accent underline underline-offset-2"
                         >
                             {t("privacy-policy")}
                         </a>
                     </Label>
                 </div>
                 {agreeTermsError && (
-                    <p className="text-sm text-red-400 ml-7">
-                        {agreeTermsError}
-                    </p>
+                    <p className="text-sm text-error ml-7">{agreeTermsError}</p>
                 )}
             </div>
 
@@ -77,11 +75,11 @@ export function TermsCheckboxes({
                     id="newsletter"
                     name="newsletter"
                     defaultChecked={newsletter}
-                    className="mt-0.5 data-[state=checked]:bg-blue-500 data-[state=checked]:border-blue-500 data-[state=checked]:text-white"
+                    className="mt-0.5 data-[state=checked]:bg-[var(--primary)] data-[state=checked]:border-[var(--primary)] data-[state=checked]:text-white"
                 />
                 <Label
                     htmlFor="newsletter"
-                    className="text-sm text-slate-300 cursor-pointer hover:text-slate-200 transition-colors"
+                    className="text-sm text-secondary cursor-pointer hover:text-heading transition-colors"
                 >
                     {t("receive-news")}
                 </Label>

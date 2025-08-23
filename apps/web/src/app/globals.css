@@ -1,12 +1,333 @@
 @import "tailwindcss";
 
-@theme inline {
-    --color-background: var(--background);
-    --color-foreground: var(--foreground);
-    --font-sans: var(--font-geist-sans);
-    --font-mono: var(--font-geist-mono);
-}
-
 body {
     font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--background);
+    color: var(--foreground);
+}
+
+/* Theme tokens (light/dark) applied via html[data-theme] */
+/* Default to system-preferred; next-themes + inline script will set attribute early */
+
+:root[data-theme="dark"] {
+    /* Backgrounds */
+    --background: #020617; /* slate-950 */
+    --bg-grad-from: #020617; /* slate-950 */
+    --bg-grad-via: #0f172a; /* slate-900 */
+    --bg-grad-to: #020617; /* slate-950 */
+
+    --card-bg: rgba(30, 41, 59, 0.3); /* slate-800/30 */
+    --card-bg-soft: rgba(30, 41, 59, 0.2); /* slate-800/20 */
+    --card-bg-strong: rgba(30, 41, 59, 0.9); /* slate-800/90 */
+
+    --header-bg: rgba(15, 23, 42, 0.2); /* slate-900/20 */
+    --header-border: rgba(30, 41, 59, 0.5); /* slate-800/50 */
+
+    --input-bg: rgba(51, 65, 85, 0.3); /* slate-700/30 */
+    --input-bg-strong: rgba(51, 65, 85, 0.5); /* slate-700/50 */
+    --input-border: rgba(71, 85, 105, 0.5); /* slate-600/50 */
+
+    --social-bg: rgba(51, 65, 85, 0.2); /* slate-700/20 */
+    --social-bg-hover: rgba(51, 65, 85, 0.4); /* slate-700/40 */
+
+    --toggle-bg: rgba(255, 255, 255, 0.1);
+    --toggle-bg-hover: rgba(255, 255, 255, 0.2);
+    --toggle-bg-active: rgba(255, 255, 255, 0.95);
+
+    --error-bg: rgba(239, 68, 68, 0.1); /* red-500/10 */
+    --progress-bg: rgba(51, 65, 85, 0.5); /* slate-700/50 */
+
+    /* Gradients */
+    --logo-grad-from: #60a5fa; /* blue-400 */
+    --logo-grad-via: #22d3ee; /* cyan-400 */
+    --logo-grad-to: #3b82f6; /* blue-500 */
+    --btn-grad-from: #3b82f6; /* blue-500 */
+    --btn-grad-to: #06b6d4; /* cyan-500 */
+    --text-grad-from: #f1f5f9; /* slate-100 */
+    --text-grad-to: #cbd5e1; /* slate-300 */
+
+    /* Text */
+    --foreground: #e5e7eb; /* slate-200 -> slightly brighter than 100 */
+    --heading: #f1f5f9; /* slate-100 */
+    --text-secondary: #94a3b8; /* slate-400 */
+    --text-interactive: #e2e8f0; /* slate-200 */
+    --text-accent: #60a5fa; /* blue-400 */
+    --text-accent-hover: #93c5fd; /* blue-300 */
+    --text-error: #f87171; /* red-400 */
+
+    /* Borders */
+    --border-default: rgba(51, 65, 85, 0.5); /* slate-700/50 */
+    --border-strong: rgba(30, 41, 59, 0.5); /* slate-800/50 */
+    --border-input: rgba(71, 85, 105, 0.5); /* slate-600/50 */
+    --border-focus: rgba(96, 165, 250, 0.5); /* blue-400/50 */
+    --border-error: rgba(248, 113, 113, 0.4); /* red-400/40 */
+
+    /* Shadows & Rings */
+    --shadow: rgba(2, 6, 23, 0.5); /* slate-950/50 */
+    --shadow-button: rgba(59, 130, 246, 0.25); /* blue-500/25 */
+    --shadow-button-hover: rgba(59, 130, 246, 0.4); /* blue-500/40 */
+    --shadow-card: rgba(2, 6, 23, 0.5); /* slate-950/50 */
+    --ring: rgba(96, 165, 250, 0.5); /* blue-400/50 */
+
+    /* Primary tokens for components (used by btn default) */
+    --primary: #3b82f6; /* blue-500 */
+    --primary-foreground: #ffffff;
+    --destructive: #ef4444; /* red-500 */
+}
+
+:root[data-theme="light"] {
+    /* Backgrounds */
+    --background: #f8fafc; /* slate-50 */
+    --bg-grad-from: #f8fafc; /* slate-50 */
+    --bg-grad-via: #f1f5f9; /* slate-100 */
+    --bg-grad-to: #f8fafc; /* slate-50 */
+
+    --card-bg: #ffffff;
+    --card-bg-soft: rgba(255, 255, 255, 0.8);
+    --card-bg-strong: rgba(255, 255, 255, 0.6);
+
+    --header-bg: rgba(255, 255, 255, 0.7);
+    --header-border: rgba(226, 232, 240, 0.6); /* slate-200/60 */
+
+    --input-bg: #ffffff;
+    --input-bg-strong: #ffffff;
+    --input-border: #cbd5e1; /* slate-300 */
+
+    --social-bg: #f1f5f9; /* slate-100 */
+    --social-bg-hover: #e2e8f0; /* slate-200 */
+
+    --toggle-bg: rgba(226, 232, 240, 0.6); /* slate-200/60 */
+    --toggle-bg-hover: rgba(226, 232, 240, 0.8);
+    --toggle-bg-active: #ffffff;
+
+    --error-bg: rgba(239, 68, 68, 0.1);
+    --progress-bg: #e2e8f0; /* slate-200 */
+
+    /* Gradients */
+    --logo-grad-from: #2563eb; /* blue-600 */
+    --logo-grad-via: #06b6d4; /* cyan-500 */
+    --logo-grad-to: #2563eb; /* blue-600 */
+    --btn-grad-from: #2563eb; /* blue-600 */
+    --btn-grad-to: #06b6d4; /* cyan-500 */
+    --text-grad-from: #0f172a; /* slate-900 */
+    --text-grad-to: #374151; /* slate-700 (gray-700 close) */
+
+    /* Text */
+    --foreground: #0f172a; /* slate-900 */
+    --heading: #0f172a; /* slate-900 */
+    --text-secondary: #475569; /* slate-600 */
+    --text-interactive: #334155; /* slate-700 */
+    --text-accent: #2563eb; /* blue-600 */
+    --text-accent-hover: #3b82f6; /* blue-500 */
+    --text-error: #b91c1c; /* red-700 */
+
+    /* Borders */
+    --border-default: rgba(226, 232, 240, 0.6); /* slate-200/60 */
+    --border-strong: rgba(203, 213, 225, 0.6); /* slate-300/60 */
+    --border-input: #cbd5e1; /* slate-300 */
+    --border-focus: rgba(96, 165, 250, 0.5); /* blue-400/50 */
+    --border-error: rgba(239, 68, 68, 0.4); /* red-500/40 */
+
+    /* Shadows & Rings */
+    --shadow: rgba(15, 23, 42, 0.1); /* slate-900/10 */
+    --shadow-button: rgba(37, 99, 235, 0.2); /* blue-600/20 */
+    --shadow-button-hover: rgba(37, 99, 235, 0.3);
+    --shadow-card: rgba(15, 23, 42, 0.1);
+    --ring: rgba(96, 165, 250, 0.5);
+
+    /* Primary tokens for components (used by btn default) */
+    --primary: #2563eb; /* blue-600 */
+    --primary-foreground: #ffffff;
+    --destructive: #dc2626; /* red-600 */
+}
+
+/* Utilities mapped to theme tokens */
+@layer utilities {
+    .app-bg {
+        background-color: var(--background);
+    }
+    .app-bg-gradient {
+        background-image: linear-gradient(
+            to bottom right,
+            var(--bg-grad-from),
+            var(--bg-grad-via),
+            var(--bg-grad-to)
+        );
+    }
+
+    .app-card {
+        background-color: var(--card-bg);
+        box-shadow: 0 10px 40px var(--shadow-card);
+    }
+    .app-card-soft {
+        background-color: var(--card-bg-soft);
+    }
+    .app-card-strong {
+        background-color: var(--card-bg-strong);
+    }
+
+    .app-header {
+        background-color: var(--header-bg);
+        border-bottom: 1px solid var(--header-border);
+        backdrop-filter: blur(8px);
+    }
+
+    .app-input {
+        background-color: var(--input-bg);
+        border: 1px solid var(--input-border);
+    }
+    .app-input-strong {
+        background-color: var(--input-bg-strong);
+        border: 1px solid var(--input-border);
+    }
+
+    .btn-gradient {
+        height: 3rem;
+        border-radius: 0.75rem;
+        color: #ffffff;
+        font-weight: 600;
+        background-image: linear-gradient(
+            to right,
+            var(--btn-grad-from),
+            var(--btn-grad-to)
+        );
+        box-shadow: 0 10px 20px var(--shadow-button);
+        transition:
+            transform 150ms,
+            box-shadow 150ms,
+            opacity 150ms;
+    }
+    .btn-gradient:hover {
+        transform: scale(1.02);
+        box-shadow: 0 12px 24px var(--shadow-button-hover);
+    }
+    .btn-gradient:active {
+        transform: scale(0.98);
+    }
+    .btn-gradient:disabled {
+        opacity: 0.5;
+        filter: none;
+        transform: none;
+    }
+
+    .btn-social {
+        height: 2.75rem;
+        border-radius: 0.75rem;
+        background-color: var(--social-bg);
+        border: 1px solid var(--border-input);
+        color: var(--text-secondary);
+        transition:
+            background-color 150ms,
+            color 150ms,
+            border-color 150ms;
+        backdrop-filter: blur(6px);
+    }
+    .btn-social:hover {
+        background-color: var(--social-bg-hover);
+        color: var(--foreground);
+        border-color: var(--border-default);
+    }
+
+    .btn-toggle {
+        position: relative;
+        border-radius: 9999px;
+        height: 2.25rem;
+        width: 2.25rem;
+        transition: background-color 150ms;
+        background-color: var(--toggle-bg);
+        border: 1px solid var(--border-default);
+    }
+    .btn-toggle:hover {
+        background-color: var(--toggle-bg-hover);
+    }
+    .btn-toggle[data-active="true"] {
+        background-color: var(--toggle-bg-active);
+    }
+
+    .text-heading {
+        color: var(--heading);
+    }
+    .text-secondary {
+        color: var(--text-secondary);
+    }
+    .text-accent {
+        color: var(--text-accent);
+    }
+    .text-accent:hover {
+        color: var(--text-accent-hover);
+    }
+    .text-error {
+        color: var(--text-error);
+    }
+
+    .border-default {
+        border-color: var(--border-default);
+    }
+    .border-strong {
+        border-color: var(--border-strong);
+    }
+    .border-input {
+        border-color: var(--border-input);
+    }
+    .border-error {
+        border-color: var(--border-error);
+    }
+
+    .ring-focus {
+        box-shadow: 0 0 0 3px var(--ring);
+    }
+
+    .shadow-app {
+        box-shadow: 0 15px 50px var(--shadow);
+    }
+    .shadow-card {
+        box-shadow: 0 20px 60px var(--shadow-card);
+    }
+    .shadow-button {
+        box-shadow: 0 10px 20px var(--shadow-button);
+    }
+
+    .logo-gradient {
+        background-image: linear-gradient(
+            to bottom right,
+            var(--logo-grad-from),
+            var(--logo-grad-via),
+            var(--logo-grad-to)
+        );
+    }
+    .text-logo-gradient {
+        background-image: linear-gradient(
+            to right,
+            var(--text-grad-from),
+            var(--text-grad-to)
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+
+    .menu-surface {
+        backdrop-filter: blur(8px);
+        background-color: color-mix(in oklab, var(--card-bg) 70%, transparent);
+        border: 1px solid var(--border-default);
+    }
+
+    /* Theme icon swap */
+    .btn-toggle .icon-sun {
+        transform: rotate(0deg) scale(1);
+        transition: transform 200ms ease;
+        color: var(--text-interactive);
+    }
+    .btn-toggle .icon-moon {
+        position: absolute;
+        transform: rotate(90deg) scale(0);
+        transition: transform 200ms ease;
+        color: var(--text-interactive);
+    }
+    :root[data-theme="dark"] .btn-toggle .icon-sun {
+        transform: rotate(-90deg) scale(0);
+    }
+    :root[data-theme="dark"] .btn-toggle .icon-moon {
+        transform: rotate(0deg) scale(1);
+    }
 }
