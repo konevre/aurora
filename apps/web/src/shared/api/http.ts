@@ -11,6 +11,21 @@ export type RequestOptions = Omit<RequestInit, "method"> & {
     json?: unknown;
 };
 
+export type HttpErrorBody = {
+    message: string;
+    error: string;
+    statusCode: number;
+};
+
+export class HttpError extends Error {
+    constructor(
+        public readonly response: Response,
+        public readonly body: HttpErrorBody
+    ) {
+        super(body.message);
+    }
+}
+
 /**
  * Utility class for making HTTP requests.
  *
@@ -85,11 +100,11 @@ export class HttpClient {
         return url.toString();
     }
 
-    private makeRequest<T>(
+    private async makeRequest<T>(
         method: HttpMethod,
         pathname: string,
         options: RequestOptions = {}
-    ) {
+    ): Promise<T> {
         const { json, searchParams, headers, ...rest } = options;
         const finalHeaders: HeadersInit = {
             ...(this.defaultHeaders || {}),
@@ -110,7 +125,25 @@ export class HttpClient {
         }
 
         const url = this.buildUrl(pathname, searchParams);
-        return fetch(url, init) as Promise<Response>;
+        const res = await fetch(url, init);
+
+        // Try to parse the body (if JSON)
+        const contentType = res.headers.get("content-type") || "";
+        const body: HttpErrorBody | undefined = contentType.includes(
+            "application/json"
+        )
+            ? ((await res
+                  .json()
+                  .catch(() => undefined)) as unknown as HttpErrorBody)
+            : ((await res
+                  .text()
+                  .catch(() => undefined)) as unknown as HttpErrorBody);
+
+        if (!res.ok) {
+            throw new HttpError(res, body);
+        }
+
+        return body as T;
     }
 
     get(pathname: string, options?: RequestOptions) {

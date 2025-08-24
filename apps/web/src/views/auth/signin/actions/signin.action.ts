@@ -4,6 +4,8 @@ import { redirect } from "next/navigation";
 import { getTranslations } from "next-intl/server";
 import { z } from "zod";
 
+import { request, tryCatch } from "@/shared/api";
+
 async function createSigninSchema() {
     const t = await getTranslations("ValidationErrors");
 
@@ -51,8 +53,6 @@ export async function signinAction(
         const signinSchema = await createSigninSchema();
         const validatedData = signinSchema.safeParse(rawData);
 
-        console.log("\n\nVALIDATION ", validatedData);
-
         if (!validatedData.success) {
             const flattened = z.flattenError(validatedData.error);
             const errors = flattened.fieldErrors;
@@ -64,16 +64,24 @@ export async function signinAction(
             };
         }
 
-        // TODO: Handle success
-        console.log("Вход пользователя:", {
-            emailOrUsername: validatedData.data.emailOrUsername
-        });
+        const [error] = await tryCatch(
+            request.post("/api/auth/signin", {
+                json: validatedData.data
+            })
+        );
 
-        await new Promise((resolve) => setTimeout(resolve, 1000));
-
-        redirect("/auth/signin/success");
+        if (error) {
+            return {
+                success: false,
+                message: t(error.message),
+                errors: {},
+                data: prevState.data
+            };
+        }
     } catch (error) {
-        console.error("Ошибка при входе:", error);
+        console.error(
+            `❌: Sign In action error: ${error instanceof Error ? error.message : "Unknown error"}`
+        );
 
         return {
             success: false,
@@ -82,4 +90,7 @@ export async function signinAction(
             data: prevState.data
         };
     }
+
+    // Can't place in try/catch because internally it throws an error
+    redirect("/auth/signin/success");
 }

@@ -8,6 +8,7 @@
     "scripts": {
         "build": "nest build",
         "start": "cross-env APP_STAGE=production nest start",
+        "dev": "ts-node -r tsconfig-paths/register src/main.ts",
         "start:dev": "cross-env APP_STAGE=development nest start --watch",
         "start:debug": "nest start --debug --watch",
         "start:prod": "node dist/main",

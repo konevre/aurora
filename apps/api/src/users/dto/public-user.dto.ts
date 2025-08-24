@@ -2,13 +2,13 @@ import { Exclude, Expose } from "class-transformer";
 
 export class PublicUserDto {
     @Expose()
-    id: string;
+    id!: string;
 
     @Expose()
-    username: string;
+    username!: string;
 
     @Expose()
-    email: string;
+    email!: string;
 
     @Expose()
     displayName?: string;
@@ -17,14 +17,14 @@ export class PublicUserDto {
     avatarFileId?: number;
 
     @Expose()
-    experienceXp: number;
+    experienceXp!: number;
 
     @Expose()
-    tokenVersion: number;
+    tokenVersion!: number;
 
     @Expose()
-    createdAt: Date;
+    createdAt!: Date;
 
     @Exclude()
-    passwordHash: string;
+    passwordHash!: string;
 }

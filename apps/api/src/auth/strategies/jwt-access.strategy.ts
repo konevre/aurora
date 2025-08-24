@@ -30,8 +30,7 @@ export class JwtAccessStrategy extends PassportStrategy(
                 jwtFromCookie(ACCESS_COOKIE),
                 ExtractJwt.fromAuthHeaderAsBearerToken()
             ]),
-            secretOrKey:
-                configService.getOrThrow<Algorithm>("JWT_ACCESS_SECRET"),
+            secretOrKey: configService.getOrThrow<string>("JWT_ACCESS_SECRET"),
             algorithms: [configService.getOrThrow<Algorithm>("JWT_ALGORITHM")],
             ignoreExpiration: false
         });

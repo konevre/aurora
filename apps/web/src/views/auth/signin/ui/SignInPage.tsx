@@ -92,7 +92,7 @@ export function SignInPage() {
 
                     <form action={formAction} className="space-y-5">
                         <AnimatePresence>
-                            {state.message && (
+                            {state?.message && (
                                 <motion.div
                                     initial={{
                                         opacity: 0,
@@ -108,7 +108,7 @@ export function SignInPage() {
                                         color: "var(--text-error)"
                                     }}
                                 >
-                                    {state.message}
+                                    {state?.message}
                                 </motion.div>
                             )}
                         </AnimatePresence>
@@ -118,8 +118,8 @@ export function SignInPage() {
                                 placeholder={t("email-or-username-placeholder")}
                                 name="emailOrUsername"
                                 label={t("email-or-username")}
-                                defaultValue={state.data?.emailOrUsername}
-                                error={state.errors?.emailOrUsername?.[0]}
+                                defaultValue={state?.data?.emailOrUsername}
+                                error={state?.errors?.emailOrUsername?.[0]}
                             />
                         </motion.div>
                         <motion.div variants={fade(0.4)}>
@@ -127,13 +127,13 @@ export function SignInPage() {
                                 placeholder="••••••••"
                                 name="password"
                                 label={t("password")}
-                                error={state.errors?.password?.[0]}
+                                error={state?.errors?.password?.[0]}
                                 showStrengthMeter={true}
                             />
                         </motion.div>
 
                         <motion.div
-                            variants={fade(0.7)}
+                            variants={fade(0.6)}
                             whileHover={{ y: -1 }}
                             whileTap={{ y: 0 }}
                         >
@@ -161,7 +161,7 @@ export function SignInPage() {
                         </motion.div>
 
                         <motion.div
-                            variants={fade(0.8)}
+                            variants={fade(0.7)}
                             className="relative py-4"
                         >
                             <div className="absolute inset-0 flex items-center">
@@ -175,7 +175,7 @@ export function SignInPage() {
                         </motion.div>
 
                         <motion.div
-                            variants={fade(0.9)}
+                            variants={fade(0.8)}
                             className="grid grid-cols-2 gap-3"
                         >
                             <motion.div
