@@ -1,7 +1,8 @@
 "use client";
 
-import type React from "react";
 import { User } from "lucide-react";
+import type React from "react";
+
 import { Input } from "@/shared/ui/input";
 
 interface UsernameInputProps {

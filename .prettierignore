@@ -1,14 +1,6 @@
 node_modules
 dist
-coverage
-.turbo
-*.log
-**/*.d.ts
-
-node_modules
-dist
 .turbo
 .next
-build
 coverage
-*.log
+build

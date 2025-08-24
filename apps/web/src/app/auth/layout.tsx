@@ -1,6 +1,7 @@
-import { PropsWithChildren } from "react";
-import { HeaderWidget } from "@/widgets/header";
+import type { PropsWithChildren } from "react";
+
 import { FooterWidget } from "@/widgets/footer";
+import { HeaderWidget } from "@/widgets/header";
 
 export default function AuthLayout({ children }: PropsWithChildren) {
     return (

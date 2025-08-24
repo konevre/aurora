@@ -21,10 +21,12 @@ export class AuthService {
         meta: { ua?: string; ip?: string }
     ) {
         const refreshTtlSec = parseInt(
-            this.configService.get("JWT_REFRESH_TTL_SEC")!
+            this.configService.getOrThrow<string>("JWT_REFRESH_TTL_SEC"),
+            10
         );
         const accessTtlSec = parseInt(
-            this.configService.get("JWT_ACCESS_TTL_SEC")!
+            this.configService.getOrThrow<string>("JWT_ACCESS_TTL_SEC"),
+            10
         );
 
         const session = await this.sessionsService.create(user.id, {
@@ -57,14 +59,15 @@ export class AuthService {
         await this.sessionsService.revoke(sid);
     }
 
-    async refresh(principal: {
+    refresh(principal: {
         userId: string;
         username?: string;
         sid: string;
         tokenVersion?: number;
     }) {
         const accessTtlSec = parseInt(
-            this.configService.get("JWT_ACCESS_TTL_SEC")!
+            this.configService.getOrThrow<string>("JWT_ACCESS_TTL_SEC"),
+            10
         );
         const access = this.tokensService.signAccess(
             {

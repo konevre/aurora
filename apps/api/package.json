@@ -7,17 +7,16 @@
     "license": "UNLICENSED",
     "scripts": {
         "build": "nest build",
-        "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
         "start": "cross-env APP_STAGE=production nest start",
         "start:dev": "cross-env APP_STAGE=development nest start --watch",
         "start:debug": "nest start --debug --watch",
         "start:prod": "node dist/main",
-        "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
+        "lint": "eslint . --ext .ts --cache",
+        "lint:fix": "eslint . --ext .ts --fix --cache",
         "test": "vitest run",
         "test:watch": "vitest",
         "test:cov": "vitest run --coverage",
-        "test:debug": "vitest --run --reporter verbose",
-        "test:e2e": "jest --config ./test/jest-e2e.json"
+        "test:debug": "vitest --run --reporter verbose"
     },
     "dependencies": {
         "@nestjs/common": "^11.0.1",
@@ -53,7 +52,6 @@
         "@types/supertest": "^6.0.2",
         "@vitest/coverage-v8": "^3.2.4",
         "cross-env": "^10.0.0",
-        "eslint": "^9.18.0",
         "eslint-config-prettier": "^10.1.8",
         "eslint-plugin-import": "^2.32.0",
         "eslint-plugin-prettier": "^5.5.4",
@@ -70,22 +68,5 @@
         "typescript-eslint": "^8.20.0",
         "vitest": "^3.2.4",
         "zod": "^4.0.17"
-    },
-    "jest": {
-        "moduleFileExtensions": [
-            "js",
-            "json",
-            "ts"
-        ],
-        "rootDir": "src",
-        "testRegex": ".*\\.spec\\.ts$",
-        "transform": {
-            "^.+\\.(t|j)s$": "ts-jest"
-        },
-        "collectCoverageFrom": [
-            "**/*.(t|j)s"
-        ],
-        "coverageDirectory": "../coverage",
-        "testEnvironment": "node"
     }
 }

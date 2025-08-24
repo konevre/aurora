@@ -1,8 +1,8 @@
 "use client";
 
-import type React from "react";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
+
 import { Checkbox } from "@/shared/ui/checkbox";
 import { Label } from "@/shared/ui/label";
 

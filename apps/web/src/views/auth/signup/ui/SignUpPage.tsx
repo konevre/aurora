@@ -1,19 +1,20 @@
 "use client";
 
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowRight, Chrome, Github, Sparkles, UserPlus } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useActionState, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { UserPlus, ArrowRight, Github, Chrome, Sparkles } from "lucide-react";
-import { PasswordInput } from "@/shared/components/PasswordInput";
+
 import { EmailInput } from "@/shared/components/EmailInput";
-import { UsernameInput } from "@/shared/components/UsernameInput";
+import { PasswordInput } from "@/shared/components/PasswordInput";
 import { TermsCheckboxes } from "@/shared/components/TermsCheckboxes";
 import { ToastNotification } from "@/shared/components/ToastNotification";
+import { UsernameInput } from "@/shared/components/UsernameInput";
 import { Button } from "@/shared/ui/button";
 import {
     signupAction,
     type SignupFormState
 } from "@/views/auth/signup/actions/signup.action";
-import { useTranslations } from "next-intl";
 
 const fade = (d = 0) => ({
     hidden: { opacity: 0, y: 12, scale: 0.98 },

@@ -1,8 +1,8 @@
 "use server";
 
-import { z } from "zod";
 import { redirect } from "next/navigation";
 import { getTranslations } from "next-intl/server";
+import { z } from "zod";
 
 async function createSignupSchema() {
     const t = await getTranslations("ValidationErrors");

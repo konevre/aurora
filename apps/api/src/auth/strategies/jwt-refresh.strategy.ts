@@ -2,6 +2,7 @@ import { Injectable, UnauthorizedException } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { PassportStrategy } from "@nestjs/passport";
 import { Request } from "express";
+import { Algorithm } from "jsonwebtoken";
 import { ExtractJwt, Strategy } from "passport-jwt";
 
 import { REFRESH_COOKIE } from "../constants/cookies";
@@ -32,8 +33,9 @@ export class JwtRefreshStrategy extends PassportStrategy(
             jwtFromRequest: ExtractJwt.fromExtractors([
                 jwtFromCookie(REFRESH_COOKIE)
             ]),
-            secretOrKey: configService.get("JWT_REFRESH_SECRET")!,
-            algorithms: [configService.get("JWT_ALGORITHM")!],
+            secretOrKey:
+                configService.getOrThrow<Algorithm>("JWT_REFRESH_SECRET"),
+            algorithms: [configService.getOrThrow<Algorithm>("JWT_ALGORITHM")],
             ignoreExpiration: false,
             passReqToCallback: true
         });

@@ -1,8 +1,8 @@
 import { vi } from "vitest";
 vi.mock("src/config/env", () => ({ isProd: false }));
 
-import { ConfigService } from "@nestjs/config";
-import { Response } from "express";
+import type { ConfigService } from "@nestjs/config";
+import type { Response } from "express";
 import { beforeEach, describe, expect, it } from "vitest";
 
 import { AuthService } from "src/auth/auth.service";
@@ -32,6 +32,11 @@ describe("AuthService", () => {
                 if (key === "JWT_REFRESH_TTL_SEC") return "120";
                 if (key === "JWT_ACCESS_TTL_SEC") return "60";
                 return undefined;
+            }),
+            getOrThrow: vi.fn((key: string) => {
+                if (key === "JWT_REFRESH_TTL_SEC") return "120";
+                if (key === "JWT_ACCESS_TTL_SEC") return "60";
+                throw new Error(`Missing config: ${key}`);
             })
         } as unknown as ConfigService;
 

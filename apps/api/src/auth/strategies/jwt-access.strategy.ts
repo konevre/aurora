@@ -1,6 +1,7 @@
-import { Injectable, UnauthorizedException } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { PassportStrategy } from "@nestjs/passport";
+import { Algorithm } from "jsonwebtoken";
 import { ExtractJwt, Strategy } from "passport-jwt";
 
 import { ACCESS_COOKIE } from "../constants/cookies";
@@ -29,8 +30,9 @@ export class JwtAccessStrategy extends PassportStrategy(
                 jwtFromCookie(ACCESS_COOKIE),
                 ExtractJwt.fromAuthHeaderAsBearerToken()
             ]),
-            secretOrKey: configService.get("JWT_ACCESS_SECRET")!,
-            algorithms: [configService.get("JWT_ALGORITHM")!],
+            secretOrKey:
+                configService.getOrThrow<Algorithm>("JWT_ACCESS_SECRET"),
+            algorithms: [configService.getOrThrow<Algorithm>("JWT_ALGORITHM")],
             ignoreExpiration: false
         });
     }

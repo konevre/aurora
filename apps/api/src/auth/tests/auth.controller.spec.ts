@@ -76,7 +76,7 @@ describe("AuthController", () => {
     it("refresh updates access and sets cookie", async () => {
         const req = { user: { userId: "u1", sid: "s1" } } as any;
         const res = {} as any;
-        authService.refresh.mockResolvedValue({
+        authService.refresh.mockReturnValue({
             access: "a",
             accessTtlMs: 1000
         });

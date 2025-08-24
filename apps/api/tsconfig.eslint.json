@@ -1,0 +1,14 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "noEmit": true,
+        "types": ["node", "vitest/globals", "cookie-parser"]
+    },
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.d.ts",
+        "src/**/tests/**/*.ts",
+        ".vitest.setup.ts"
+    ],
+    "exclude": ["dist", "node_modules"]
+}

@@ -8,18 +8,22 @@ import {
     MinLength
 } from "class-validator";
 
+// type-safe normalization of string
+const lowerTrim = (input: unknown): string =>
+    typeof input === "string" ? input.toLowerCase().trim() : "";
+
 export class CreateUserDto {
-    @Transform(({ value }) => value.toLowerCase().trim())
+    @Transform(({ value }) => lowerTrim(value))
     @IsEmail()
-    email: string;
+    email!: string;
 
     @IsNotEmpty()
     @IsString()
     @MinLength(8)
     @MaxLength(64)
-    password: string;
+    password!: string;
 
-    @Transform(({ value }) => value.toLowerCase().trim())
+    @Transform(({ value }) => lowerTrim(value))
     @IsNotEmpty()
     @MinLength(3)
     @MaxLength(64)
@@ -28,5 +32,5 @@ export class CreateUserDto {
         message:
             "Username can only contain letters, numbers, dots, underscores, and hyphens"
     })
-    username: string;
+    username!: string;
 }

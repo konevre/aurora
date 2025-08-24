@@ -6,7 +6,8 @@
         "dev": "next dev --turbopack -p 3001",
         "build": "next build --turbopack",
         "start": "next start -p 3001",
-        "lint": "eslint"
+        "lint": "eslint . --ext .ts,.tsx --cache",
+        "lint:fix": "eslint . --ext .ts,.tsx --fix --cache"
     },
     "dependencies": {
         "@hookform/resolvers": "^5.2.1",
@@ -27,13 +28,13 @@
     },
     "devDependencies": {
         "@eslint/eslintrc": "^3",
+        "@next/eslint-plugin-next": "^15.5.0",
         "@tailwindcss/postcss": "^4",
         "@types/node": "^20",
         "@types/react": "^19",
         "@types/react-dom": "^19",
         "clsx": "^2.1.1",
-        "eslint": "^9",
-        "eslint-config-next": "15.5.0",
+        "eslint-plugin-react-hooks": "^5.2.0",
         "tailwind-merge": "^3.3.1",
         "tailwindcss": "^4",
         "typescript": "^5"

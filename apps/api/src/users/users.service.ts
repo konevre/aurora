@@ -32,7 +32,10 @@ export class UsersService {
 
         const passwordHash = await bcrypt.hash(
             password,
-            parseInt(this.configService.get("BCRYPT_SALT_ROUNDS")!)
+            parseInt(
+                this.configService.getOrThrow<string>("BCRYPT_SALT_ROUNDS"),
+                10
+            )
         );
 
         const newUser = await this.prisma.user.create({
@@ -43,6 +46,7 @@ export class UsersService {
             }
         });
 
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
         const { passwordHash: _, ...publicUser } = newUser;
 
         return publicUser as unknown as PublicUserDto;
@@ -51,11 +55,11 @@ export class UsersService {
     async findByEmailOrUsername(
         emailOrUsername: string
     ): Promise<PublicUserDto | null> {
-        return this.prisma.user.findFirst({
+        return (await this.prisma.user.findFirst({
             where: {
                 OR: [{ email: emailOrUsername }, { username: emailOrUsername }]
             }
-        }) as unknown as PublicUserDto;
+        })) as unknown as PublicUserDto;
     }
 
     async getTokenVersion(userId: string): Promise<number | null> {

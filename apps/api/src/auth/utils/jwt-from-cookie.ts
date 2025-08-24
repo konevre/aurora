@@ -1,16 +1,17 @@
-import { Request } from "express";
+import type { Request } from "express";
 
-export function jwtFromCookie(
-    cookieName: string
-): (req: Request) => string | null {
+export function jwtFromCookie(cookieName: string) {
     return (req: Request): string | null => {
         if (!req) return null;
 
-        const signedToken = (req as any).signedCookies?.[cookieName];
-        if (typeof signedToken === "string" && signedToken.length > 0)
-            return signedToken;
+        const signed: string | undefined = (
+            req.signedCookies as Record<string, string> | undefined
+        )?.[cookieName];
+        if (signed && signed.length > 0) return signed;
 
-        const token = (req as any).cookies?.[cookieName];
-        return typeof token === "string" && token.length > 0 ? token : null;
+        const raw: string | undefined = (
+            req.cookies as Record<string, string> | undefined
+        )?.[cookieName];
+        return raw && raw.length > 0 ? raw : null;
     };
 }

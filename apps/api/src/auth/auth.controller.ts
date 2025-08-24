@@ -105,7 +105,7 @@ export class AuthController {
 
     @UseGuards(JwtRefreshGuard)
     @Post("refresh")
-    async refresh(
+    refresh(
         @Req() request: Request,
         @Res({ passthrough: true }) response: Response
     ) {
@@ -115,7 +115,8 @@ export class AuthController {
             sid: string;
             tokenVersion?: number;
         };
-        const tokens = await this.authService.refresh(principal);
+
+        const tokens = this.authService.refresh(principal);
 
         this.authService.setAuthCookies(response, tokens);
 

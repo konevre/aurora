@@ -1,20 +1,51 @@
 {
     "$schema": "https://turbo.build/schema.json",
-    "globalDependencies": ["**/.env.*local"],
+    "globalDependencies": [
+        "**/.env.*local",
+        "package-lock.json",
+        "pnpm-lock.yaml",
+        "yarn.lock",
+        "turbo.json",
+        "eslint.config.*",
+        "prettier.config.*",
+        ".prettierrc",
+        ".prettierrc.json",
+        "tsconfig.base.json"
+    ],
     "tasks": {
         "build": {
             "dependsOn": ["^build"],
-            "outputs": [".next/**", "!.next/cache/**", "dist/**"]
+            "outputs": [".next/**", "!**/.next/cache/**", "dist/**", "build/**"]
+        },
+        "type-check": {
+            "dependsOn": ["^type-check"],
+            "outputs": []
         },
         "lint": {
-            "dependsOn": ["^lint"]
+            "dependsOn": ["^lint"],
+            "outputs": [],
+            "inputs": [
+                "src/**",
+                "app/**",
+                "pages/**",
+                "components/**",
+                "eslint.config.*",
+                "package.json",
+                "!dist/**",
+                "!.next/**"
+            ]
+        },
+        "test": {
+            "dependsOn": ["^test"],
+            "outputs": ["coverage/**"]
         },
         "dev": {
             "cache": false,
             "persistent": true
         },
         "clean": {
-            "cache": false
+            "cache": false,
+            "dependsOn": ["^clean"]
         }
     }
 }

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
+
 import { ThemeToggle } from "@/shared/components";
 
 interface HeaderWidgetProps {

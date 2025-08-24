@@ -1,25 +1,23 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
+import cfg from "@aurora/eslint-config";
+import next from "@next/eslint-plugin-next";
+import reactHooks from "eslint-plugin-react-hooks";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+const nextCoreWebVitalsRules = next.configs?.["core-web-vitals"]?.rules ?? {};
 
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
-
-const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
-  {
-    ignores: [
-      "node_modules/**",
-      ".next/**",
-      "out/**",
-      "build/**",
-      "next-env.d.ts",
-    ],
-  },
+export default [
+    ...cfg.web,
+    {
+        files: ["**/*.{ts,tsx}"],
+        plugins: {
+            "@next/next": next,
+            "react-hooks": reactHooks
+        },
+        rules: {
+            ...nextCoreWebVitalsRules,
+            "react/react-in-jsx-scope": "off",
+            "react/jsx-uses-react": "off",
+            "react-hooks/rules-of-hooks": "error",
+            "react-hooks/exhaustive-deps": "warn"
+        }
+    }
 ];
-
-export default eslintConfig;

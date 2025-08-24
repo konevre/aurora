@@ -1,6 +1,6 @@
 import { ValidationPipe } from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
-import * as cookieParser from "cookie-parser";
+import cookieParser from "cookie-parser";
 
 import { env } from "./config/env";
 import { AppModule } from "./app.module";
@@ -19,4 +19,8 @@ async function bootstrap() {
 
     console.log(`\n👀 Server is running on: ${env.PORT} [${env.APP_STAGE}]\n`);
 }
-bootstrap();
+
+bootstrap().catch((err) => {
+    console.error(err);
+    process.exit(1);
+});

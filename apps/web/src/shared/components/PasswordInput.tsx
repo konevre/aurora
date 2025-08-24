@@ -1,11 +1,12 @@
 "use client";
 
+import { motion } from "framer-motion";
+import { Eye, EyeOff, Lock } from "lucide-react";
+import { useTranslations } from "next-intl";
 import type React from "react";
 import { useMemo, useState } from "react";
-import { motion } from "framer-motion";
-import { Lock, Eye, EyeOff } from "lucide-react";
+
 import { Input } from "@/shared/ui/input";
-import { useTranslations } from "next-intl";
 
 interface PasswordInputProps {
     value?: string;

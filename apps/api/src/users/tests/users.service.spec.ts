@@ -4,7 +4,7 @@ vi.mock("bcrypt", () => ({
 }));
 
 import { ConflictException } from "@nestjs/common";
-import { ConfigService } from "@nestjs/config";
+import type { ConfigService } from "@nestjs/config";
 import * as bcrypt from "bcrypt";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
@@ -29,6 +29,10 @@ describe("UsersService", () => {
             get: vi.fn((key: string) => {
                 if (key === "BCRYPT_SALT_ROUNDS") return "10";
                 return undefined;
+            }),
+            getOrThrow: vi.fn((key: string) => {
+                if (key === "BCRYPT_SALT_ROUNDS") return "10";
+                throw new Error(`Missing config: ${key}`);
             })
         } as unknown as ConfigService;
 
