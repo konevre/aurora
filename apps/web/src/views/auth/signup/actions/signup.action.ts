@@ -23,11 +23,9 @@ async function createSignupSchema() {
             confirmPassword: z
                 .string()
                 .min(1, { message: t("confirm-password-required") }),
-            agreeTerms: z
-                .boolean()
-                .refine((val) => val === true, {
-                    message: t("agree-terms-required")
-                }),
+            agreeTerms: z.boolean().refine((val) => val === true, {
+                message: t("agree-terms-required")
+            }),
             newsletter: z.boolean().optional()
         })
         .refine((data) => data.password === data.confirmPassword, {
@@ -105,7 +103,7 @@ export async function signupAction(
 
         return {
             success: false,
-            message: t("registration-error"),
+            message: t("signup-error"),
             errors: {},
             data: prevState.data
         };

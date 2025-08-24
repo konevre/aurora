@@ -31,11 +31,11 @@ export default function RootLayout({
                 className={`${geistSans.variable} ${geistMono.variable} antialiased`}
             >
                 {/* Early theme apply to avoid FOUC */}
-                <script
+                {/* <script
                     dangerouslySetInnerHTML={{
                         __html: `(() => { try { const ls = localStorage.getItem('theme'); const mql = window.matchMedia('(prefers-color-scheme: dark)'); const system = mql.matches ? 'dark' : 'light'; const theme = ls === 'system' || !ls ? system : ls; document.documentElement.setAttribute('data-theme', theme); } catch(_){} })();`
                     }}
-                />
+                /> */}
                 <ThemeProvider
                     defaultTheme="system"
                     enableSystem

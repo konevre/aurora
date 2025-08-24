@@ -1,6 +1,6 @@
 "use client";
 
-import { Moon, Sun } from "lucide-react";
+import { Moon, Sun, LaptopMinimal } from "lucide-react";
 import { useTheme } from "next-themes";
 import { Button } from "@/shared/ui/button";
 import {
@@ -44,7 +44,7 @@ export function ThemeToggle() {
                     onClick={() => setTheme("system")}
                     className="cursor-pointer"
                 >
-                    <Sun className="mr-2 h-4 w-4" />
+                    <LaptopMinimal className="mr-2 h-4 w-4" />
                     System
                 </DropdownMenuItem>
             </DropdownMenuContent>

@@ -22,9 +22,29 @@
         "email-address": "Email Address",
         "full-name-placeholder": "John Doe",
         "registering-with": "Registering with",
-        "and": "and"
+        "and": "and",
+        "sign-in-to-aurora": "Sign in to Aurora"
+    },
+    "SignInPage": {
+        "email-or-username-placeholder": "Email or username",
+        "email-or-username": "Email or username",
+        "password": "Password",
+        "signing-in": "Signing in...",
+        "sign-in": "Sign in",
+        "or-continue-with": "or continue with",
+        "by-signing-in": "By signing in, you agree to our",
+        "terms-of-use": "Terms of Use",
+        "privacy-policy": "Privacy Policy",
+        "no-account": "No account?",
+        "try-demo": "Try Demo",
+        "sign-up": "Sign up",
+        "and": "and",
+        "sign-in-to-aurora": "Sign in to Aurora",
+        "welcome": "Welcome"
     },
     "ValidationErrors": {
+        "email-or-username-required": "Email or username must contain at least 2 characters",
+        "email-or-username-too-long": "Email or username should not exceed 50 characters",
         "name-required": "Name must contain at least 2 characters",
         "name-too-long": "Name should not exceed 50 characters",
         "invalid-email": "Please enter a valid email address",
@@ -36,7 +56,8 @@
         "passwords-not-match": "Passwords do not match",
         "agree-terms-required": "You must accept the terms of use",
         "form-errors": "Please fix the errors in the form",
-        "registration-error": "An error occurred during registration. Please try again."
+        "signup-error": "An error occurred during registration. Please try again.",
+        "signin-error": "An error occurred during signin. Please try again."
     },
     "FooterWidget": {
         "help": "Help",

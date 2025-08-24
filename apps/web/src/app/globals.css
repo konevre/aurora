@@ -211,7 +211,7 @@ body {
     }
 
     .btn-social {
-        height: 2.75rem;
+        height: 3rem;
         border-radius: 0.75rem;
         background-color: var(--social-bg);
         border: 1px solid var(--border-input);
@@ -245,6 +245,9 @@ body {
     }
 
     .text-heading {
+        color: var(--heading);
+    }
+    .hover\:text-heading:hover {
         color: var(--heading);
     }
     .text-secondary {

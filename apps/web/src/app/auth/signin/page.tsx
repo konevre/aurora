@@ -1,5 +1,5 @@
-import { SignUpPage } from "@/views/auth/signup/ui/SignUpPage";
+import { SignInPage } from "@/views/auth/signin";
 
-export default function SignInPage() {
-    return <SignUpPage />;
+export default function Page() {
+    return <SignInPage />;
 }

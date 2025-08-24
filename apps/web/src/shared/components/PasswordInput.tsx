@@ -114,7 +114,7 @@ export function PasswordInput({
                 <motion.button
                     type="button"
                     onClick={onToggleShowPassword}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-secondary hover:text-heading transition-colors p-1"
+                    className="cursor-pointer absolute right-3 top-1/2 -translate-y-1/2 text-secondary hover:text-heading transition-colors p-1"
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.95 }}
                 >
